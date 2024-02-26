@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #232c33;
+  font-family: "Roboto Slab", serif;
+}
+
+.nav-link {
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.75rem;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+.nav-link:hover {
+  border: 2px solid yellow;
+}
+
+.MuiOutlinedInput-input-root.MuiFocused,
+.MuiOutlinedInput-notchedOutline,
+.MuiFormLabel-root {
+  border-color: black !important;
+  color: black !important;
+}
