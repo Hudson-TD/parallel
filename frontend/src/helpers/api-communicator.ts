@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const signupUser = async (name: string, email: string, password: string) => {
   const res = await axios.post("/users/signup", { name, email, password });
-  if (res.status !== 200) {
+  if (res.status !== 201) {
     throw new Error("Unable to create account.");
   }
   const data = await res.data;

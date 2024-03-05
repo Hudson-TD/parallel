@@ -7,24 +7,24 @@ export default function Header() {
   const auth = useAuth();
   return (
     <AppBar
-      sx={{ bgcolor: "transparent", position: "static", boxShadow: "none" }}
+      sx={{ bgcolor: "transparent", position: "static", boxShadow: "none"}}
     >
-      <Toolbar sx={{ display: "flex" }}>
+      <Toolbar sx={{ display: "flex", width: "100%"}}>
         <Logo />
         <div>
           {auth?.isLoggedIn ? (
             <>
               <NavigationLink
-                background="#00A6A6"
+                background="#F5FBEF"
                 to="/chat"
                 text="Chat"
-                textColor="white"
+                textColor="black"
               />
               <NavigationLink
-                background="#51538f"
-                to="/home"
+                background="#F5FBEF"
+                to="/"
                 text="Logout"
-                textColor="white"
+                textColor="black"
                 onClick={auth.logout}
               />
             </>
@@ -37,10 +37,10 @@ export default function Header() {
                 textColor="black"
               />
               <NavigationLink
-                background="#00A6A6"
+                background="#F5FBEF"
                 to="/signup"
                 text="Signup"
-                textColor="white"
+                textColor="black"
               />
             </>
           )}

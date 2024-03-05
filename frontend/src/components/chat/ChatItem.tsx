@@ -46,10 +46,11 @@ export const ChatItem = ({
         bgcolor: "#4D5061",
         my: 2,
         gap: 2,
+        borderRadius: 3
       }}
     >
       <Box>
-        {!messageBlocks && <Typography fontSize={"20px"}>{content}</Typography>}
+        {!messageBlocks && <Typography fontSize={{md: "20px", xs: "14px"}}>{content}</Typography>}
         {messageBlocks &&
           messageBlocks.length &&
           messageBlocks.map((block) =>
@@ -58,7 +59,7 @@ export const ChatItem = ({
                 {block}
               </SyntaxHighlighter>
             ) : (
-              <Typography fontSize={"20px"}>{block}</Typography>
+              <Typography fontSize={{md: "20px", xs: "14px"}}>{block}</Typography>
             )
           )}
       </Box>
@@ -74,6 +75,7 @@ export const ChatItem = ({
         gap: 5,
         p: 2,
         bgcolor: "#00A6A6",
+        borderRadius: 3
       }}
     >
       <Avatar
@@ -86,7 +88,7 @@ export const ChatItem = ({
         {auth?.user?.name[0]}
       </Avatar>
       <Box>
-        <Typography fontSize={"20px"}>{content}</Typography>
+        <Typography fontSize={{md: "20px", xs: "14px"}}>{content}</Typography>
       </Box>
     </Box>
   );

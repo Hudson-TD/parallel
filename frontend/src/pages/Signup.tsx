@@ -26,15 +26,15 @@ export default function Signup() {
     }
   };
   return (
-    <Box width={"100%"} height={"100%"} display={"flex"} flex={"1"}>
-      <Box
-        display={"flex"}
-        flex={{ sm: "1", ms: "0.5" }}
-        justifyContent={"center"}
-        alignItems={"center"}
-        ml={"auto"}
-        mt={16}
-      >
+    <Box
+      width={"100%"}
+      height={"100%"}
+      display={"flex"}
+      flex={"1"}
+      justifyContent={"center"}
+      alignItems={"center"}
+    >
+      <Box display={"flex"} flex={{ sm: "1", ms: "0.5" }} mt={16}>
         <form
           style={{
             margin: "auto",
@@ -76,7 +76,7 @@ export default function Signup() {
                 bgcolor: "#868784",
                 color: "white",
                 ":hover": {
-                  bgcolor: "#00A6A6",
+                  bgcolor: "rgb(16 185 129)",
                   color: "white",
                   outline: "2px solid black",
                 },

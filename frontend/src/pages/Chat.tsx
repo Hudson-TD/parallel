@@ -46,6 +46,7 @@ export default function Chat() {
       toast.success("Successfully deleted chat history.", {
         id: "deleteChats",
       });
+      window.location.reload();
     } catch (error) {
       console.log(error);
       toast.error("Error deleting chat history.", { id: "deleteChats" });
@@ -81,16 +82,16 @@ export default function Chat() {
     <Box
       sx={{
         display: "flex",
-        flex: "1",
-        width: "100%",
-        height: "100%",
+        flexDirection: "column",
         mt: 3,
-        gap: 3,
+        gap: 5,
       }}
     >
       <Box
         sx={{
-          display: { md: "flex" },
+          display: { md: "flex", xs: "block" },
+          flexDirection: "column",
+          gap: 5,
           justifyContent: "center",
           alignItems: "center",
         }}
@@ -98,22 +99,20 @@ export default function Chat() {
         <Box
           sx={{
             display: "flex",
+            width: { md: "90%", sm: "100%" },
             justifyContent: "center",
-            width: "25%",
-            height: "75vh",
             bgcolor: "rgb(17,29,39)",
-            borderRadius: 5,
-            mx: 3,
+            borderRadius: 3,
           }}
         >
           <Box
             sx={{
               display: "flex",
+              mt: { md: 0, xs: 3 },
               flexDirection: "column",
-              textAlign: "center",
-              width: "80%",
+              justifyContent: "center",
+              alignItems: "center",
               height: "100%",
-              p: 5,
             }}
           >
             <Avatar
@@ -144,12 +143,11 @@ export default function Chat() {
             </span>
             <Button
               sx={{
-                width: "200px",
-                my: "auto",
+                width: "40%",
+                my: 2,
                 color: "white",
                 fontWeight: "700",
                 borderRadius: 3,
-                mx: "auto",
                 bgcolor: red[400],
                 ":hover": {
                   bgcolor: red.A400,
@@ -164,7 +162,8 @@ export default function Chat() {
         <Box
           sx={{
             display: "flex",
-            width: "75%",
+            width: { md: "90%", sm: "100%" },
+            mt: { md: 0, xs: 3 },
             flexDirection: "column",
             gap: 10,
           }}
@@ -173,55 +172,76 @@ export default function Chat() {
             sx={{
               display: "flex",
               flexDirection: "column",
-              width: "auto",
-              height: "60vh",
+              width: "100%",
+              height: "auto",
               bgcolor: "rgb(17,29,39)",
-              mx: 3,
-              overflowY: "auto",
+              overflowY: "scroll",
+              textWrap: "true",
+              borderRadius: 3,
             }}
           >
             <Box>
-              {chatMessages.map((chat, index) => (
-                <ChatItem
-                  content={chat.content}
-                  role={chat.role as "assistant" | "user"}
-                  key={index}
-                />
-              ))}
+              {chatMessages.length === 0 ? (
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <p
+                    style={{
+                      color: "white",
+                      fontSize: "1.5rem",
+                    }}
+                  >
+                    Send a message to start a conversation.
+                  </p>
+                </div>
+              ) : (
+                chatMessages.map((chat, index) => (
+                  <ChatItem
+                    content={chat.content}
+                    role={chat.role as "assistant" | "user"}
+                    key={index}
+                  />
+                ))
+              )}
             </Box>
           </Box>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 10,
-              width: "90%",
-              alignSelf: "center",
-            }}
-          >
-            <label style={{ fontSize: "1.5rem", color: "white" }}>Chat:</label>
-            <input
-              ref={inputRef}
-              type="text"
-              style={{
-                width: "100%",
-                backgroundColor: "white",
-                padding: "1rem",
-                border: "none",
-                borderRadius: "2rem",
-                outline: "none",
-              }}
-            />
-            <Button
-              variant="contained"
-              color="success"
-              startIcon={<IoMdSend />}
-              onClick={handleSubmit}
-            >
-              Send
-            </Button>
-          </div>
         </Box>
+      </Box>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 2,
+          width: { md: "100%", xs: "100%" },
+          marginBottom: "2rem",
+        }}
+      >
+        <label style={{ fontSize: "1.5rem", color: "white" }}>Chat:</label>
+        <input
+          ref={inputRef}
+          type="text"
+          style={{
+            width: "75%",
+            backgroundColor: "white",
+            padding: "1rem",
+            border: "none",
+            borderRadius: "1rem",
+            outline: "none",
+          }}
+        />
+        <Button
+          variant="contained"
+          color="success"
+          startIcon={<IoMdSend />}
+          onClick={handleSubmit}
+        >
+          Send
+        </Button>
       </Box>
     </Box>
   );

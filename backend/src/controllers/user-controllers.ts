@@ -48,8 +48,8 @@ export const userSignup = async (
     });
     // Assign JWT with 24hr life
     const token = createToken(
-      existingUser._id.toString(),
-      existingUser.email,
+      newUser._id.toString(),
+      newUser.email,
       "1d"
     );
     res.cookie(COOKIE_NAME, token, {
@@ -62,8 +62,8 @@ export const userSignup = async (
 
     return res.status(201).json({
       message: "Success",
-      name: existingUser.name,
-      email: existingUser.email,
+      name: newUser.name,
+      email: newUser.email,
     });
   } catch (error) {
     return res.status(200).json({ message: "Error", cause: error.message });

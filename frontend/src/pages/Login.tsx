@@ -3,6 +3,7 @@ import CustomizedInput from "../components/shared/CustomizedInput";
 import { useAuth } from "../context/AuthContext";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function Login() {
   const auth = useAuth();
@@ -24,6 +25,12 @@ export default function Login() {
       toast.error("Error Signing In", { id: "login" });
     }
   };
+
+  useEffect(() => {
+    if (auth?.user) {
+      return navigate("/chat");
+    }
+  });
   return (
     <Box width={"100%"} height={"100%"} display={"flex"} flex={"1"}>
       <Box
@@ -62,7 +69,7 @@ export default function Login() {
             >
               Welcome Back!
             </Typography>
-            <CustomizedInput name="email" type="Email" label="Email"/>
+            <CustomizedInput name="email" type="Email" label="Email" />
             <CustomizedInput name="password" type="Password" label="Password" />
             <Button
               type="submit"
@@ -75,9 +82,9 @@ export default function Login() {
                 bgcolor: "#868784",
                 color: "white",
                 ":hover": {
-                  bgcolor: "#00A6A6",
+                  bgcolor: "rgb(16 185 129)",
                   color: "white",
-                  outline: "2px solid black"
+                  outline: "2px solid black",
                 },
               }}
             >
